@@ -123,7 +123,7 @@ var enemyDefeated = function(){
             player.routeKills[player.route]++;
             // updateRoute();
             var chance = Math.floor(Math.random()*100+1);
-            if(chance < getItemChance(player.route))
+            // if(chance < getItemChance(player.route))
 
             setTimeout(function(){
                   $("#enemyInfo").html("<br>"+curEnemy.name+"<br><img id=enemy src=images/enemies/"+curEnemy.id+".gif>");
