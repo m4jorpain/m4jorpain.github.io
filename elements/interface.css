@@ -1,0 +1,27 @@
+body {
+  background-image: url(http://i.imgur.com/X3Fmw50.jpg);=
+  /*background-color: black;*/
+}
+
+#statTable {
+  background-color: white;
+  border: 2px solid black;
+}
+
+#console, #currentEnemy, #upgradeBox, #navBar, #townView, #gymView, #dungeonView {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+#currentEnemy, #gymView, #dungeonView{
+	border: 2px solid black;
+	text-align:center;
+	height: 250px;
+	margin-bottom: 20px;
+}
+
+#console{
+	border: 2px solid black;
+	height:198px;
+	overflow: scroll;
+	margin-bottom: 10px;
+}
