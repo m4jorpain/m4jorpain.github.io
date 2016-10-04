@@ -32,7 +32,7 @@ $(document).ready(function(){
 
       // setInterval(itemInterval, 1000);
       // itemInterval();
-      // initUpgrades();
+      initUpgrades();
       if(localStorage.getItem("player") != null){
             // load();
             generateEnemy(player.route)
@@ -67,7 +67,7 @@ $(document).ready(function(){
             }
       });
 
-      //upgrades
+      // upgrades
       $("body").on('click',".upgradeBoxes", function(){
             var id = this.id.substr(7,this.id.length);
             for( var i = 0; i<player.upgradeList.length; i++){
@@ -77,6 +77,7 @@ $(document).ready(function(){
                               applyUpgrade(upgrade.type,upgrade.amount);
                               player.upgradeList[i].bought = 1;
                               player.money -= upgrade.cost;
+                              updateAll();
                         } else {
                               log("Not enought money!");
                         }
@@ -91,13 +92,11 @@ $(document).ready(function(){
 
 // Alles updaten
 var updateAll = function(){
-      // calculateAttack();
-      // updateRoute();
       updateStats();
       if( inProgress == 1){
             updateEnemy();
       }
-      // updateUpgrades();
+      updateUpgrades();
 }
 
 var getClickAttack = function(){
@@ -135,8 +134,7 @@ var enemyDefeated = function(){
               if( inProgress == 1){
                     generateEnemy(player.route);
               }
-              updateStats();
-              updateEnemy();
+              updateAll();
             }, 1000);
             curEnemy.alive = false;
       }
@@ -145,10 +143,6 @@ var enemyDefeated = function(){
 var generateEnemy = function(route){
       var randomEnemy;
       var rand = Math.floor(Math.random()*enemyList.length);
-
-      // if(route <= 30){
-      //
-      // }
 
       randomEnemyName = enemyList[rand].name;
       randomEnemy = getEnemyByName(randomEnemyName);

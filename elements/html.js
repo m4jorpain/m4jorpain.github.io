@@ -32,3 +32,19 @@ var updateStats = function(){
 						"<tr><th>Minion Attack</th><th>0</th></tr>"
 			)
 }
+
+var updateUpgrades = function(){
+	$(".upgradeBoxes").remove();
+	for( var i = 0; i<player.upgradeList.length; i++){
+		if( player.upgradeList[i].require <= boughtUpgrades() && !player.upgradeList[i].bought
+		&& (alreadyUpgradeId(player.upgradeList[i].requiredUpgrade) || player.upgradeList[i].requiredUpgrade == null )){
+			var upgrade = player.upgradeList[i];
+			if(player.money > upgrade.cost){
+				$("#upgradeBox").append("<button type=button id=Upgrade"+upgrade.id+" title=s class='upgradeBoxes btn btn-primary col-sm-12'>"+upgrade.name+"<br>Cost: "+upgrade.cost+"</button>");
+			} else {
+				$("#upgradeBox").append("<button type=button id=Upgrade"+upgrade.id+" title=s class='upgradeBoxes disabled btn btn-primary col-sm-12'>"+upgrade.name+"<br>Cost: "+upgrade.cost+"</button>");
+			}
+			document.getElementById("Upgrade"+upgrade.id).title = upgrade.flavorText;
+		}
+	}
+}

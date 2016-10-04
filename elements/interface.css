@@ -12,16 +12,34 @@ body {
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
-#currentEnemy, #gymView, #dungeonView{
+#currentEnemy, #gymView, #dungeonView {
 	border: 2px solid black;
-	text-align:center;
-	height: 250px;
+	text-align: center;
+	height: 200px;
+	margin-bottom: 20px;
+}
+
+#upgradeBox {
+  text-align: center;
+}
+
+.upgradeBoxes {
+  position: relative;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.upgrades {
+	min-height: 250px;
+	overflow: hidden;
+	background-color:white;
+	border:2px solid black;
 	margin-bottom: 20px;
 }
 
 #console{
 	border: 2px solid black;
 	height:198px;
-	overflow: scroll;
+	overflow: hidden;
 	margin-bottom: 10px;
 }
