@@ -3,6 +3,20 @@ body {
   /*background-color: black;*/
 }
 
+#leftColumn {
+	margin-right: 7.5px;
+	padding-right: 25px;
+}
+
+#middleColumn {
+	margin-left: 7.5px;
+}
+
+#rightColumn {
+	margin-left: 7.5px;
+	padding-left: 25px;
+}
+
 #statTable {
   background-color: white;
   border: 2px solid black;
@@ -19,6 +33,12 @@ body {
 	margin-bottom: 20px;
 }
 
+#enemy {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+}
+
 #upgradeBox {
   text-align: center;
 }
@@ -32,26 +52,25 @@ body {
 }
 
 button.upgradeBoxes p {
-	position: fixed; 
+	position: fixed;
 	left: -9999px;
-  	margin: 10px 10 10 10px; 
-  	padding: 10px 10px 10px 10px; 
+  	margin: 10px 10 10 10px;
+  	padding: 10px 10px 10px 10px;
   	border-radius: 10px 10px 10px 10px;
-  	border-style:solid; 
-  	border-color:black; 
+  	border-style:solid;
+  	border-color:black;
   	border-width:1px;
   	text-align: left;
   	z-index: 9999;
 }
 button.upgradeBoxes:hover p {
 	position: fixed;
-	margin: -50px 0 0 100px; 
-	background: #bce3ff; 
+	margin: -50px 0 0 100px;
+	background: #bce3ff;
 	z-index: 9999;
 	color: black;
-	left: 20%; 
-	background: #bce3ff;
-} 
+	left: 20%;
+}
 
 .upgrades {
 	min-height: 250px;

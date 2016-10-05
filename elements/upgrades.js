@@ -20,6 +20,8 @@ var initUpgrades = function(){
   addUpgrade("Damage Up! I", 100, "plusDamage", 1, 0, "This upgrade will give you one more clicking power", null);
   addUpgrade("Damage Up! II", 500, "plusDamage", 1, 0, "This upgrade will give you one more clicking power", 0);
   addUpgrade("Damage Up! III", 2000, "plusDamage", 2, 0, "This upgrade will give you two more clicking power", 1);
+  addUpgrade("Money Moar! I", 250, "money", 10, 0, "This upgrade will give you 10% more money per enemy killed", 0);
+  addUpgrade("Money Moar! II", 1000, "money", 10, 0, "This upgrade will give you 10% more money per enemy killed", 3);
 }
 
 var applyUpgrade = function(type, amount){
@@ -27,6 +29,10 @@ var applyUpgrade = function(type, amount){
     case "plusDamage":
       player.clickAttack += amount;
       log("Your clicking attack has been increased by "+amount+"!");
+      break;
+    case "money":
+      player.moneyMultiplier += (amount/100);
+      log("Your money multiplier has been increased by "+amount+"%!");
       break;
     default:
       console.log("Something went wrong with buying an upgrade");

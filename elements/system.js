@@ -10,7 +10,7 @@ var player = {
       money: 0,
       moneyMultiplier: 1,
       expMultiplier: 1,
-      lootedWeaponsList: [],
+      lootList: [],
       upgradeList: [],
       route: 1,
       routeKills: Array.apply(null, Array(100)).map(Number.prototype.valueOf,0),
@@ -73,7 +73,7 @@ $(document).ready(function(){
             for( var i = 0; i<player.upgradeList.length; i++){
                   if( player.upgradeList[i].id == id){
                         var upgrade = player.upgradeList[i];
-                        if( !upgrade.bought && player.money > upgrade.cost){
+                        if( !upgrade.bought && player.money >= upgrade.cost){
                               applyUpgrade(upgrade.type,upgrade.amount);
                               player.upgradeList[i].bought = 1;
                               player.money -= upgrade.cost;
@@ -106,7 +106,7 @@ var getClickAttack = function(){
 
 var gainMoney = function(money, message){
 	     if(!isNaN(money)){
-            money = Math.floor(money);
+            money = Math.floor(money*player.moneyMultiplier);
             player.money += money
             log(message + money + "!");
        }
