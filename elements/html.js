@@ -19,7 +19,7 @@ var updateEnemy = function(){
         enemyDefeated();
     }
     if (curEnemy.alive){
-			$("#enemyInfo").html("<br>"+curEnemy.name+"<br><img id=enemy src=images/enemies/"+curEnemy.id+".png>");
+			$("#enemyInfo").html("<br>"+curEnemy.name+"<br><img id=enemy src=images/enemies/"+curEnemy.id+".gif>");
     }
     $("#healthBar").width(100*curEnemy.health/curEnemy.maxHealth+"%");
     $("#healthDisplay").html(curEnemy.health+"/"+curEnemy.maxHealth);
@@ -31,6 +31,18 @@ var updateStats = function(){
 						"<tr><th>Click Attack</th><th>"+getClickAttack()+"</th></tr>" +
 						"<tr><th>Minion Attack</th><th>0</th></tr>"
 			)
+}
+
+var updateInventory = function(){
+	var invHTML = "";
+
+	for( i=0; i<player.lootList.length; i++){
+		var indexItem = player.lootList[i];
+		if( indexItem.looted > 0){
+			invHTML += "<tr><th>"+indexItem.name+"</th><th>"+indexItem.damage+"</th></tr>"
+		}
+	}
+	$("#invBody").html(invHTML);
 }
 
 var updateUpgrades = function(){

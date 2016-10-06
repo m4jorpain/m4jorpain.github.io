@@ -10,6 +10,7 @@ var player = {
       money: 0,
       moneyMultiplier: 1,
       expMultiplier: 1,
+      inventory: [],
       lootList: [],
       upgradeList: [],
       route: 1,
@@ -24,7 +25,6 @@ var curEnemy = {
       maxHealth: 20,
       moneyReward: 20,
       alive: true,
-      lootList: [1],
       route: 1
 }
 
@@ -32,6 +32,7 @@ $(document).ready(function(){
 
       // setInterval(itemInterval, 1000);
       // itemInterval();
+      initLoot();
       initUpgrades();
       if(localStorage.getItem("player") != null){
             // load();
@@ -87,6 +88,7 @@ $(document).ready(function(){
 
       log("Dit is een work-in-progress web clicker game");
       log("De code is vooral een inspiratie uit pokeclicker");
+      log("Klik op de enemy om hem aan te vallen")
       log("Have fun");
 })
 
@@ -97,6 +99,7 @@ var updateAll = function(){
             updateEnemy();
       }
       updateUpgrades();
+      updateInventory();
 }
 
 var getClickAttack = function(){
@@ -125,11 +128,16 @@ var enemyDefeated = function(){
             // if(chance < getItemChance(player.route))
 
             setTimeout(function(){
-                  $("#enemyInfo").html("<br>"+curEnemy.name+"<br><img id=enemy src=images/enemies/"+curEnemy.id+".gif>");
+                  $("#enemyInfo").html("<br>"+curEnemy.name+"<br><img id=enemy src=images/enemies/"+curEnemy.id+"_death.gif>");
             }, 1);
 
+            var catchRate = curEnemy.catchRate;
+
             setTimeout(function(){
-              // $("#enemyInfo").html("<br>"+curEnemy.name+" <img id=alreadyCaughtImage src=images/Pokeball.PNG><br><img id=pokeball src=images/Pokeball.PNG>");
+              if(Math.floor(Math.random()*100+1) <= 10){
+                gainLoot(Math.floor(Math.random()*player.lootList.length));
+              }
+
 
               if( inProgress == 1){
                     generateEnemy(player.route);

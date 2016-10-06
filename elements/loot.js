@@ -1,8 +1,3 @@
-// Loot: ID, NAME, DAMAGE
-var lootList = [
-  {ID: 1, name: "Club", damage: 2}
-]
-
 var addLoot = function(name, cost, damage, baseChance, flavorText){
   var temp = {
     id: player.lootList.length,
@@ -18,9 +13,10 @@ var addLoot = function(name, cost, damage, baseChance, flavorText){
 
 //              name, cost, damage, baseChance, flavorText
 var initLoot = function(){
-  addUpgrade("Rock", 2, 2, 10, "It doesn't do much, but it's better than nothing");
-  addUpgrade("Brick", 2, 2, 8, "It doesn't do much, but it's better than nothing");
+  addLoot("Rock", 2, 2, 10, "It doesn't do much, but it's better than nothing");
+  addLoot("Brick", 2, 2, 8, "It doesn't do much, but it's better than nothing");
 }
+
 
 var lootChance = function(){
 
@@ -38,4 +34,9 @@ var gainRandomLoot = function(enemyID){
 	var rand = Math.floor(Math.random()*possibleItems.length);
 	randomItemName = possibleItems[rand];
   return gainItemByName(randomItemName);
+}
+
+var gainLoot = function(index){
+  player.lootList[index].looted += 1;
+  log("You found loot! '"+player.lootList[index].name+"' has been added to your inventory");
 }
