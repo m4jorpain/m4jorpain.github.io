@@ -39,9 +39,18 @@ var updateInventory = function(){
 	for( i=0; i<player.lootList.length; i++){
 		var indexItem = player.lootList[i];
 		if( indexItem.looted > 0){
-			invHTML += "<tr><th>"+indexItem.name+"</th><th>"+indexItem.damage+"</th></tr>"
+			invHTML += "<tr><th>"+indexItem.name+"</th><th>"+indexItem.damage+"</th><th><button type=button id=Equip class="+indexItem.id+" ></button></th></tr>"
 		}
-	}
+	};
+		
+		if(indexItem.equip = true){
+            $("."+indexItem.id).html("Equipped");
+        }
+		else{
+			$("."+indexItem.id).html("Equip");
+        }
+            
+
 	$("#invBody").html(invHTML);
 }
 

@@ -1,4 +1,4 @@
-var addLoot = function(name, cost, damage, baseChance, flavorText){
+var addLoot = function(name, cost, damage, baseChance, flavorText, equip){
   var temp = {
     id: player.lootList.length,
     name: name,
@@ -6,15 +6,16 @@ var addLoot = function(name, cost, damage, baseChance, flavorText){
     damage: damage,
     baseChance: baseChance,
     looted: 0,
-    flavorText: flavorText
+    flavorText: flavorText,
+    equip: equip,
   }
   player.lootList.push(temp);
 }
 
 //              name, cost, damage, baseChance, flavorText
 var initLoot = function(){
-  addLoot("Rock", 2, 2, 10, "It doesn't do much, but it's better than nothing");
-  addLoot("Brick", 2, 2, 8, "It doesn't do much, but it's better than nothing");
+  addLoot("Rock", 2, 2, 10, "It doesn't do much, but it's better than nothing", false);
+  addLoot("Brick", 2, 2, 8, "It doesn't do much, but it's better than nothing", false);
 }
 
 

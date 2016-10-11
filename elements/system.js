@@ -12,6 +12,7 @@ var player = {
       expMultiplier: 1,
       inventory: [],
       lootList: [],
+      itemDamage: 0,
       upgradeList: [],
       route: 1,
       routeKills: Array.apply(null, Array(100)).map(Number.prototype.valueOf,0),
@@ -41,6 +42,21 @@ $(document).ready(function(){
 
       updateAll();
       $("currentEnemy").show();
+
+      $("body").on('click', "#Equip", function(){
+            var thisClass = $(this).attr("class");
+            player.itemDamage = player.lootList[thisClass].damage;
+            player.lootList[thisClass].equip = true;
+            
+            /*if(player.lootList[thisClass].equip = true){
+                  document.getElementById("Equip").innerHTML = "Equipped";
+            } 
+            else{
+                  document.getElementById("Equip").innerHTML = "Equip";
+            } */
+
+            updateStats();
+      });
 
       $("body").on('click', "#enemy", function(){
             clicks++;
@@ -103,7 +119,7 @@ var updateAll = function(){
 }
 
 var getClickAttack = function(){
-      var clickAttack = Math.floor(player.clickAttack*player.clickMultiplier);
+      var clickAttack = Math.floor((player.clickAttack*player.clickMultiplier)+player.itemDamage);
 	    return clickAttack;
 }
 
