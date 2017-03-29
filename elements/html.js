@@ -45,6 +45,12 @@ var updateInventory = function(){
 	$("#invBody").html(invHTML);
 }
 
+var showVillage = function(villageID){
+  var html = "";
+  html += "<h3 class='villageName'>"+villageID.name+"</h3>";
+
+}
+
 var updateUpgrades = function(){
 	$(".upgradeBoxes").remove();
 	for( var i = 0; i<player.upgradeList.length; i++){

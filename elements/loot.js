@@ -1,3 +1,5 @@
+var lootList = [];
+
 var addLoot = function(name, cost, damage, baseChance, flavorText){
   var temp = {
     id: player.lootList.length,
