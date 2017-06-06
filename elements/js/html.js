@@ -39,7 +39,11 @@ var updateInventory = function(){
 	for( i=0; i<player.lootList.length; i++){
 		var indexItem = player.lootList[i];
 		if( indexItem.looted > 0){
-			invHTML += "<tr><th>"+indexItem.name+"</th><th>"+indexItem.damage+"</th></tr>"
+			invHTML += "<tr>" +
+				"<th>"+indexItem.name+"</th>" +
+				"<th>"+indexItem.damage+"</th>" +
+				"<th><button>Equip</button></th>" +
+				"</tr>"
 		}
 	}
 	$("#invBody").html(invHTML);

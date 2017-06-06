@@ -13,10 +13,11 @@ var player = {
       inventory: [],
       lootList: [],
       upgradeList: [],
+      equippedWeapon: [],
       route: 1,
       routeKills: Array.apply(null, Array(100)).map(Number.prototype.valueOf,0),
       routeKillsNeeded: 10
-}
+};
 
 var curEnemy = {
       name: "Peasant",
@@ -26,7 +27,7 @@ var curEnemy = {
       moneyReward: 20,
       alive: true,
       route: 1
-}
+};
 
 $(document).ready(function(){
 
@@ -88,9 +89,9 @@ $(document).ready(function(){
 
       log("Dit is een work-in-progress web clicker game");
       log("De code is vooral een inspiratie uit pokeclicker");
-      log("Klik op de enemy om hem aan te vallen")
+      log("Klik op de enemy om hem aan te vallen");
       log("Have fun");
-})
+});
 
 // Alles updaten
 var updateAll = function(){
@@ -100,20 +101,20 @@ var updateAll = function(){
       }
       updateUpgrades();
       updateInventory();
-}
+};
 
 var getClickAttack = function(){
       var clickAttack = Math.floor(player.clickAttack*player.clickMultiplier);
 	    return clickAttack;
-}
+};
 
 var gainMoney = function(money, message){
 	     if(!isNaN(money)){
             money = Math.floor(money*player.moneyMultiplier);
-            player.money += money
+            player.money += money;
             log(message + money + "!");
        }
-}
+};
 
 var enemyDefeated = function(){
       if (curEnemy.alive){
@@ -146,7 +147,7 @@ var enemyDefeated = function(){
             }, 1000);
             curEnemy.alive = false;
       }
-}
+};
 
 var generateEnemy = function(route){
       var randomEnemy;
@@ -163,7 +164,16 @@ var generateEnemy = function(route){
       curEnemy.moneyReward = 20;
 
       return randomEnemy;
+};
+
+var calculateAttack = function(){
+      var total = 0;
+
 }
+
+// var getMinionAttack = function(){
+//       calcula
+// }
 
 var getEnemyAlive = function(){
       if( curEnemy.alive ){
@@ -171,7 +181,7 @@ var getEnemyAlive = function(){
       } else {
             console.log("The enemy is dead");
       }
-}
+};
 
 var getEnemyByName = function(name){
       for( var i = 0; i<enemyList.length; i++){
@@ -179,4 +189,4 @@ var getEnemyByName = function(name){
                   return enemyList[i];
             }
       }
-}
+};
